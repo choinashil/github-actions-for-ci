@@ -1,0 +1,13 @@
+name: Team awesome's approval workflow
+on: pull_request_review
+jobs:
+  labelWhenApproved:
+    name: 필요한 승인 갯수 채우면 승인 라벨 붙이기
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1명 이상 승인하면 승인 라벨 붙이기
+        uses: pullreminders/label-when-approved-action@master
+        env:
+          APPROVALS: "1"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ADD_LABEL: "승인 완료!"
